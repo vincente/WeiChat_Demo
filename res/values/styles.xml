@@ -1,0 +1,13 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppTheme" parent="android:Theme.Light" />
+    
+    <style name="whatsnew_Txt">
+        <item name="android:textSize">23sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+</resources>
