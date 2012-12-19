@@ -1,7 +1,6 @@
 package com.example.weichat.UI;
 
 import com.example.weichat.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
+/**导航过后的动画效果界面*/
 public class WhatsnewAnimationA extends Activity {
 
 	private ImageView img_left, img_right;
@@ -31,8 +31,6 @@ public class WhatsnewAnimationA extends Activity {
 				Animation.RELATIVE_TO_SELF, 0f);
 		//设置动画效果持续的时间
 		transLeft.setDuration(2000);
-		//设置动画启动时间，本例是延迟1S执行动画
-		animLeft.setStartOffset(5000);
 		//将anim对象添加到AnimationSet对象中
 		animLeft.addAnimation(transLeft);
 		animLeft.setFillAfter(true);
@@ -49,8 +47,6 @@ public class WhatsnewAnimationA extends Activity {
 				Animation.RELATIVE_TO_SELF, 0f);
 		//设置动画效果持续的时间
 		transRight.setDuration(2000);
-		//设置动画启动时间，本例是延迟1S执行动画
-		animRight.setStartOffset(5000);
 		//将anim对象添加到AnimationSet对象中
 		animRight.addAnimation(transRight);
 		animRight.setFillAfter(true);
@@ -66,7 +62,7 @@ public class WhatsnewAnimationA extends Activity {
 				startActivity(intent);
 				WhatsnewAnimationA.this.finish();
 			}
-		}, 1500);
+		}, 1000);
 	}
 	
 

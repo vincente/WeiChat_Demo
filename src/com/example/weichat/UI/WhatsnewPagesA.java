@@ -1,7 +1,6 @@
 package com.example.weichat.UI;
 
 import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
-
 import com.example.weichat.R;
 
+/** What's new 的导航界面 */
 public class WhatsnewPagesA extends Activity {
 	/** Viewpager对象 */
 	private ViewPager viewPager;
@@ -49,6 +47,7 @@ public class WhatsnewPagesA extends Activity {
 		imageViews = new ImageView[pageViews.size()];
 		// 从指定的XML文件中加载视图
 		viewPictures = (ViewGroup) inflater.inflate(R.layout.viewpagers, null);
+
 		viewPager = (ViewPager) viewPictures.findViewById(R.id.guidePagers);
 		viewPoints = (ViewGroup) viewPictures.findViewById(R.id.viewPoints);
 
@@ -73,58 +72,59 @@ public class WhatsnewPagesA extends Activity {
 		setContentView(viewPictures);
 
 		viewPager.setAdapter(new NavigationPageAdapter());
+		// 为viewpager添加监听，当view发生变化时的响应
 		viewPager.setOnPageChangeListener(new NavigationPageChangeListener());
 	}
 
+	// 导航图片view的适配器，必须要实现的是下面四个方法
 	class NavigationPageAdapter extends PagerAdapter {
 
 		@Override
 		public int getCount() {
-			// TODO Auto-generated method stub
 			return pageViews.size();
 		}
 
 		@Override
 		public boolean isViewFromObject(View arg0, Object arg1) {
-			// TODO Auto-generated method stub
 			return arg0 == arg1;
 		}
 
+		// 初始化每个Item
 		@Override
 		public Object instantiateItem(View container, int position) {
-			// TODO Auto-generated method stub
 			((ViewPager) container).addView(pageViews.get(position));
 			return pageViews.get(position);
 		}
 
+		// 销毁每个Item
 		@Override
 		public void destroyItem(View container, int position, Object object) {
-			// TODO Auto-generated method stub
 			((ViewPager) container).removeView(pageViews.get(position));
 		}
 
 	}
 
+	// viewpager的监听器，主要是onPageSelected要实现
 	class NavigationPageChangeListener implements OnPageChangeListener {
 
 		@Override
 		public void onPageScrollStateChanged(int arg0) {
-			// TODO Auto-generated method stub
 
 		}
 
 		@Override
 		public void onPageScrolled(int arg0, float arg1, int arg2) {
-			// TODO Auto-generated method stub
 
 		}
 
 		@Override
 		public void onPageSelected(int position) {
-			// TODO Auto-generated method stub
+			// 循环主要是控制导航中每个小圆点的状态
 			for (int i = 0; i < imageViews.length; i++) {
+				// 当前view下设置小圆点为选中状态
 				imageViews[i].setImageDrawable(getResources().getDrawable(
 						R.drawable.page_indicator_focused));
+				// 其余设置为飞选中状态
 				if (position != i)
 					imageViews[i].setImageDrawable(getResources().getDrawable(
 							R.drawable.page_indicator_unfocused));
@@ -133,9 +133,10 @@ public class WhatsnewPagesA extends Activity {
 
 	}
 
+	// 开始按钮方法，开始按钮在XML文件中onClick属性设置；
+	// 我试图把按钮在本activity中实例化并设置点击监听，但总是报错，使用这个方法后没有报错，原因没找到
 	public void startbutton(View v) {
-		Intent intent = new Intent();
-		intent.setClass(WhatsnewPagesA.this, WhatsnewAnimationA.class);
+		Intent intent = new Intent(WhatsnewPagesA.this, WhatsnewAnimationA.class);
 		startActivity(intent);
 		WhatsnewPagesA.this.finish();
 	}
