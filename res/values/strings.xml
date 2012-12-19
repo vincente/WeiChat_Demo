@@ -3,7 +3,7 @@
     <string name="app_name">仿微信UI</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_strat">StratActivity</string>
+    <string name="title_activity_strat">仿微信UI</string>
     
     <string name="whatsnew_page01">"微信\n超过2亿人使用的手机应用"</string>
     <string name="whatsnew_page02">"按住就能说话\n聊天是如此简单轻松"</string>

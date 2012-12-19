@@ -22,7 +22,8 @@
         </activity>
         
         <activity android:name=".UI.WhatsnewPagesA"/>
-        <activity android:name=".UI.WhatsnewAnimationA"/>
+        <activity android:name=".UI.WhatsnewAnimationA" android:theme="@android:style/Theme.Black.NoTitleBar"/>
+        <activity android:name=".UI.FirstPageA"/>
     </application>
 
 </manifest>

@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
@@ -31,8 +30,6 @@ public class WhatsnewPagesA extends Activity {
 	private ViewGroup viewPictures;
 	/** 导航小圆点的viewgroup */
 	private ViewGroup viewPoints;
-	
-	private Button start_btn;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,22 +61,22 @@ public class WhatsnewPagesA extends Activity {
 			imageViews[i] = imageView;
 			// 默认选中的是第一张图片，此时第一个小圆点是选中状态，其他不是
 			if (i == 0)
-				imageViews[i].setImageDrawable(getResources().getDrawable(R.drawable.page_indicator_focused));
+				imageViews[i].setImageDrawable(getResources().getDrawable(
+						R.drawable.page_indicator_focused));
 			else
-				imageViews[i].setImageDrawable(getResources().getDrawable(R.drawable.page_indicator_unfocused));
+				imageViews[i].setImageDrawable(getResources().getDrawable(
+						R.drawable.page_indicator_unfocused));
 			// 将imageviews添加到小圆点视图组
 			viewPoints.addView(imageViews[i]);
 		}
-		
+
 		setContentView(viewPictures);
-		
+
 		viewPager.setAdapter(new NavigationPageAdapter());
 		viewPager.setOnPageChangeListener(new NavigationPageChangeListener());
-		start_btn = (Button) viewPictures.findViewById(R.id.start_btn);
-		start_btn.setOnClickListener(new StartClickBtn());
 	}
-	
-	class NavigationPageAdapter extends PagerAdapter{
+
+	class NavigationPageAdapter extends PagerAdapter {
 
 		@Override
 		public int getCount() {
@@ -96,59 +93,51 @@ public class WhatsnewPagesA extends Activity {
 		@Override
 		public Object instantiateItem(View container, int position) {
 			// TODO Auto-generated method stub
-			((ViewPager)container).addView(pageViews.get(position));
+			((ViewPager) container).addView(pageViews.get(position));
 			return pageViews.get(position);
 		}
 
 		@Override
 		public void destroyItem(View container, int position, Object object) {
 			// TODO Auto-generated method stub
-			((ViewPager)container).removeView(pageViews.get(position));
+			((ViewPager) container).removeView(pageViews.get(position));
 		}
-		
-		
 
-
-		
 	}
-	
-	class NavigationPageChangeListener implements OnPageChangeListener{
+
+	class NavigationPageChangeListener implements OnPageChangeListener {
 
 		@Override
 		public void onPageScrollStateChanged(int arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void onPageScrolled(int arg0, float arg1, int arg2) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void onPageSelected(int position) {
 			// TODO Auto-generated method stub
-			for(int i=0;i<imageViews.length;i++){
-				imageViews[i].setImageDrawable(getResources().getDrawable(R.drawable.page_indicator_focused));
-				if(position != i)
-					imageViews[i].setImageDrawable(getResources().getDrawable(R.drawable.page_indicator_unfocused));
+			for (int i = 0; i < imageViews.length; i++) {
+				imageViews[i].setImageDrawable(getResources().getDrawable(
+						R.drawable.page_indicator_focused));
+				if (position != i)
+					imageViews[i].setImageDrawable(getResources().getDrawable(
+							R.drawable.page_indicator_unfocused));
 			}
 		}
-		
-	}
-	
-	class StartClickBtn implements OnClickListener{
 
-		@Override
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
-			Intent intent = new Intent();
-			intent.setClass(WhatsnewPagesA.this, WhatsnewAnimationA.class);
-			startActivity(intent);
-			WhatsnewPagesA.this.finish();
-		}
-		
+	}
+
+	public void startbutton(View v) {
+		Intent intent = new Intent();
+		intent.setClass(WhatsnewPagesA.this, WhatsnewAnimationA.class);
+		startActivity(intent);
+		WhatsnewPagesA.this.finish();
 	}
 
 }

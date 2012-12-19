@@ -19,6 +19,7 @@
         android:text="@string/whatsnew_start_btn"
         style="@style/whatsnew_Txt"
         android:layout_marginTop="105dp"
-        android:background="@drawable/whatsnew_start_btn"/>
+        android:background="@drawable/whatsnew_start_btn"
+        android:onClick="startbutton"/>
 
 </LinearLayout>
